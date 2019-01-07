@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scale Balancing | Challenge</title>
+	<link rel="stylesheet" type="text/css" href="./css.css">
+</head>
+<body>
+<div align="middle">
+	<h1 id="main">Scale Balancing</h1>
+	<div>
+		<span id="remark"> </span>
+	</div>
+	<div id="component-parts_1">
+	  	<!-- Two input fields taking the 2 elements of scale -->
+	    <p>Enter Weights to Scale <small>(WS)</small>:</p>
+		<input type="text" style="height:34px;border-radius: 12px; padding-left: 12px;padding-right: 12px;" placeholder="Ex. [ 5,9 ]"> <br>
+		<p>Enter List of Weights:</p>
+		<input type="text"  style="height:34px;border-radius: 12px; padding-left: 12px;padding-right: 12px;" placeholder="Ex. [1,2,6,7]"><br>
+		<!--// Two input fields taking the 2 elements of scale -->
+
+        <!--  Button in calculating the needed weight to balance -->
+		<button id="btn" onclick="scalebalance();">Run Calculation</button>
+		<!--  Button in calculating the needed weight to balance -->
+
+		<p align="middle" id="results">**Results**</p>
+		<!-- Testing for possilbility -->
+		<script type="text/javascript">
+			document
+		</script>
+		<!--  end Testing for possilbility -->
+		<hr>
+		<div>
+		<!-- A div to show result -->
+		<div id="output">
+		<p id="result_placeholder">Empty :: Please Run a Calculation</p> 
+		</div>
+		<div>
+		<p id="result_placeholder2"></p>
+		</div>
+		<!--// A div to show result -->	
+		</div>
+		<hr>
+
+
+		<p align="middle" id="results">**Guide**</p>
+		<ol>
+			<li>Enter valid inputs (Ex. Array of numbers) in the fields provided above.</li>
+			<li>NB: [5,9] Here in this array, <small>"5"</small> is the weight at the LHS(left-hand-side) of the scale and <small>"9"</small> occupies the RHS(right-hand-side).</li>
+			<li>And also [1,2,6,7] is an array with weights that could help balance up WS(Weight Scale). It is possible to add two weights to only one side of the scale to balance it</li>
+			<li>Solution Interpretation: The output returns two values, in this case (2,6). This is to say that when "2" is added to the RHS of the WS and "6" to the LHS, then both scale now equals "11" so we can say the scale is perfectly balanced.</li>
+		</ol>
+	</div>
+</div>
+<script type="text/javascript" src="./js.js"></script>
+</body>
+</html>
+

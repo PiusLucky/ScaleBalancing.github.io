@@ -1,0 +1,63 @@
+body{
+	background:blue;
+}
+#main{
+	background:whitesmoke;
+	color: black;
+	border-top-left-radius: 9px;
+	border-top-right-radius: 9px;
+	padding:-2px;
+	word-wrap: break-word;
+	padding-bottom: 3px;
+}
+
+#btn{
+	margin: 10px;
+	padding: 12px;
+	background: green;
+	color: whitesmoke;
+	border-style: ridge;
+}
+#btn:hover{
+	cursor: pointer;
+	background: orange;
+}
+#results{
+	font-weight: bold;
+}
+
+p,ol{
+	color: whitesmoke;
+}
+hr{
+	border-color: whitesmoke;
+}
+#result_placeholder{
+	font-style: italic;
+	color: green;
+	padding: 12px;
+}
+#result_placeholder2{
+	background: whitesmoke;
+	font-style: bold;
+	color: green;
+	padding: 12px;
+}
+#output{
+	background: whitesmoke;
+	margin-top: 12px
+}
+#remark{
+	color: whitesmoke;
+	font-style: italic;
+	background: whitesmoke;
+
+}
+
+ol{
+	background: #4169E1;
+	padding-bottom: 12px;
+	padding-top:12px;
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
+}
