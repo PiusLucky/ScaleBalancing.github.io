@@ -5,3 +5,4 @@ this scale by adding a 6 to the left side from the list of weights and adding a 
 side. Both scales will now equal 11 and they are perfectly balanced. The webapp
 returns a comma separated string of the weights that were used from the list in
 ascending order, so for this example returns the string 2,6. 
+check out the pen: https://codepen.io/lucky-pius/pen/PXeVxz
