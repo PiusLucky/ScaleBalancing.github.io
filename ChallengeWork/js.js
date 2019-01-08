@@ -30,13 +30,6 @@ function scalebalance(){
     let right_weight = a[1]
     let ws_array_length = a.length
 
-    // remark.innerHTML = `The length is: ${ws_array_length}`
-    // Checking for scale balance
-    if(ws_array === '' || list_array === '' ){
-        remark.innerHTML = ''
-        remark.innerHTML += `Error: Please fill all fields`
-    }
-
     if(ws_array.includes("[") && ws_array.includes("]") && ws_array.includes(",")
     || list_array.includes("[") && list_array.includes("]") && list_array.includes(",")
     ){
