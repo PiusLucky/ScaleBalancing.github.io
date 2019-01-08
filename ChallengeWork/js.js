@@ -1,127 +1,123 @@
-function scalebalance(){
-    ws_array = document.getElementsByTagName('input')[0].value
-    list_array = document.getElementsByTagName('input')[1].value
-    remark = document.getElementById('remark')
-    output_placeholder = document.getElementById('result_placeholder')
-    output_placeholder2 = document.getElementById('result_placeholder2')
+//Complying basically to ES2015
+"use strict;"
+scaleBalance = () => {
+ws_value = document.getElementsByTagName('input')[0].value
+list_value = document.getElementsByTagName('input')[1].value
+remark = document.getElementById("remarks")
+result1 = document.getElementById("results")
+result2 = document.getElementById("dummyOutput")
 
-    // converting ws_array to array for indexing
+//coverting to JS object using JSON.parse
+a = ws_value.replace(/'/g, '"');
+try{
+    a = JSON.parse(ws_value)
+}catch(e){
+    if(ws_value === '' && list_value === ''){
+        remark.innerHTML = ''
+        remark.innerHTML += "Please fill the fields"
+    }
+}
+b = list_value.replace(/'/g, '"');
+try{
+    b = JSON.parse(list_value)
+}catch(e){
+    if(ws_value === '' && list_value === ''){
+        remark.innerHTML = ''
+        remark.innerHTML += "Please fill the fields"
+    }
+}
 
-     a = ws_array.replace(/'/g, '"');
-     try {
-        a = JSON.parse(a);
-     } catch(e) {
-        null
-     }
+//sides of weight scale
 
-     // end converting ws_array to array for indexing
+let leftSide = a[0]
+let rightSide = a[1]
+let ws_length = a.length
 
-     // Converting list_array to array for indexing
-     b = list_array.replace(/'/g, '"');
-     try {
-        b = JSON.parse(b);
-     } catch(e) {
-        null
-     }
-
-     // end Converting list_array to array for indexing
-
-    let left_weight = a[0]
-    let right_weight = a[1]
-    let ws_array_length = a.length
-
-    if(ws_array.includes("[") && ws_array.includes("]") && ws_array.includes(",")
-    || list_array.includes("[") && list_array.includes("]") && list_array.includes(",")
+if(
+    ws_value.includes("[") && ws_value.includes("]") && ws_value.includes(",") 
+    ||  list_value.includes("[") && list_value.includes("]") && list_value.includes(",")
     ){
-            if(left_weight == right_weight) {
-            remark.innerHTML = `Remark: Scale Balanced`
-            }
+        if(leftSide === rightSide){
+            remark.innerHTML = ''
+            remark.innerHTML += "Remark: Scale Balanced"
+        }
+        else if(ws_length>2){
+            remark.innerHTML = ''
+            remark.innerHTML += "Error: Weight Scale takes two weights only"
 
-            // Checking for the number of elements in the scale in the LHS
-            else if (ws_array_length>2){
-            remark.innerHTML = 'Error: Sorry! the first element of the scale can only contain two weights(Array)'
-            }
-
-
-            else if(ws_array_length===2){
-              // Getting The difference of the weights of the weight scale(WS)
-              // The Math.abs converts the data passed into it into absolute values
-              // And subtracted to prevent inaccuracies in calculation
-                var diff = Math.abs(left_weight - right_weight)
-                // I hoisted this block so as to update the remark.innerHTML value 
-                remark.innerHTML = ''
-                remark.innerHTML += "oops: Scale Imbalanced"
-                // end hoist
-                for(var i = 0; i < b.length; i++){
-                if(b.includes(diff - b[i]) && b.indexOf(b[i]) != b.lastIndexOf(diff- b[i])){
-                    output_placeholder.innerHTML = ''
-                    remark.innerHTML = ''
-                    remark.innerHTML += 'Check Result Below...'
-
-                    // Returning a list of result
-                    // for(i=0; i<b[i].length; i++){
-                    //  output_placeholder.innerHTML += `${b[i]},${diff - b[i]}`   
-                    // }
-                    output_placeholder2.innerHTML += 
-                    `Adding ${b[i]} to ${diff - b[i]} and Applying to one side balances the scale <br>
-                     (${b[i]},${diff - b[i]}) <br>` 
-
-                    
-                    // console.log(`${b[i]},${diff - b[i]}`)
-                    // Showing the list in ascending order
-                    // console.log(`${b[i]},${diff - b[i]}`)
-              
+        }
+        else if (ws_length === 2){
+            headResult = document.getElementById("changeOver")
+            headResult.innerHTML = `<b>[ click on any of the input fields to clear LOG ]</b>`
+            var diff = Math.abs(leftSide - rightSide)
+            remark.innerHTML = ''
+            remark.innerHTML += "oops: Scale Imbalanced"
             
 
+            for(i=0;i<b.length;i++){
+            if(b.includes(diff-b[i]) && b.indexOf(b[i]) != b.lastIndexOf(diff - b[i])){
+             remark.innerHTML = ''
+             remark.innerHTML += "Checking result now"
 
+
+
+             result2.innerHTML += `Adding ${b[i]} to ${diff - b[i]} and applying to one side balances the scale <br>
+                (${b[i]},${diff - b[i]}) <br><hr>
+             `
+             console.log(`${b[i]},${diff - b[i]}`)
+             }
+             if(b.includes(diff + b[i])){
+                remark.innerHTML = ''
+                remark.innerHTML += "Checking result now"
+                if(rightSide === 0){
+                    console.log( `${b[i]},${diff + b[i]}`)
+                    
+                    result2.innerHTML += `Adding ${b[i]} to the LHS and ${diff + b[i]} to the RHS balances the scale <br>
+                    (${b[i]},${diff + b[i]}) <hr> 
+                    `
+
+                  
+
+                }else{
+                    console.log( `${b[i]},${diff + b[i]}`)
+                    result2.innerHTML += `Adding ${b[i]} to the RHS and ${diff + b[i]} to the LHS balances the scale <br>
+                (${b[i]},${diff + b[i]}) <br> <hr>
+                    `
+                    
                 }
-                
-                if  (b.includes(diff + b[i])) {
-                    output_placeholder.innerHTML = ''
-                    remark.innerHTML = ''
-                    remark.innerHTML += 'Check Result Below...'
-                   // Accounting for abnormally!
-                    if (right_weight === 0){
-                     output_placeholder.innerHTML += 
-                    `Adding ${b[i]} to LHS & ${diff + b[i]} to the RHS balances the scale<br>
-                     (${b[i]},${diff + b[i]}) <br>`   
-                     }else{
-                        output_placeholder.innerHTML += 
-                        `Adding ${diff + b[i]} to LHS &  ${b[i]} to the RHS balances the scale<br>
-                         (${b[i]},${diff + b[i]}) <br>` 
-                     }
 
-                }
+             }
 
-
-                
-                
-                }//end for loop
               
-            }//end else if
-           
-    }//end the ws vs list comparison
-    
-    else{
-        remark.innerHTML = ''
-        remark.innerHTML += "Error: Your Input must be an Array only"
+            }
+        }
     }
-     
-}//end function
+else{
+    remark.innerHTML = ''
+    remark.innerHTML += "Your input must be an Array only!"
+}
 
-var f = function(){
-    var focusEventHandler = function(event){
-        var divElement = document.getElementById('remark');
-        var output_placeholder2 = document.getElementById('result_placeholder2')
+}
+
+var f = () => {
+    var focusEventHandler = (event) => {
+        var divElement = document.getElementById('remarks');
+        var output_placeholder2 = document.getElementById('dummyOutput')
+        var headResult = document.getElementById("changeOver")
+        headResult.innerHTML = `<b>[ Your Output will be Displayed Below ]</b>`
+        
         divElement.innerHTML = "Welcome...."
         output_placeholder2.innerHTML = ''
+
         divElement.style.paddingLeft='17px';
         divElement.style.paddingRight='17px';
+
     }
-    var blurEventHandler = function(event){
-        var divElement = document.getElementById('remark');
+    var blurEventHandler = (event) => {
+        var divElement = document.getElementById('remarks');
         divElement.style.backgroundColor = '#4169E1'
     }
+
     
     var inputElement = document.getElementsByTagName('input')[0];
     inputElement.addEventListener('mouseenter',focusEventHandler,false )
@@ -130,6 +126,6 @@ var f = function(){
     var inputElement2 = document.getElementsByTagName('input')[1];
     inputElement2.addEventListener('mouseenter',focusEventHandler,false )
     inputElement2.addEventListener('mouseout',blurEventHandler,false )
-
+    
 }
 document.addEventListener('DOMContentLoaded', f, false)
