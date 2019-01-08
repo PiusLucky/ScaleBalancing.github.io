@@ -87,10 +87,16 @@ function scalebalance(){
                     output_placeholder.innerHTML = ''
                     remark.innerHTML = ''
                     remark.innerHTML += 'Check Result Below...'
-                    output_placeholder.innerHTML += 
-                    `Adding ${diff + b[i]} to LHS &  ${b[i]} to the RHS balances the scale<br>
-                     (${b[i]},${diff + b[i]}) <br>`
-                    // console.log(`${b[i]},${diff + b[i]}`)
+                   // Accounting for abnormally!
+                    if (right_weight === 0){
+                     output_placeholder.innerHTML += 
+                    `Adding ${b[i]} to LHS & ${diff + b[i]} to the RHS balances the scale<br>
+                     (${b[i]},${diff + b[i]}) <br>`   
+                     }else{
+                        output_placeholder.innerHTML += 
+                        `Adding ${diff + b[i]} to LHS &  ${b[i]} to the RHS balances the scale<br>
+                         (${b[i]},${diff + b[i]}) <br>` 
+                     }
 
                 }
 
