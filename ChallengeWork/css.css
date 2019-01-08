@@ -1,7 +1,8 @@
 body{
-	background:blue;
+	background: blue;
+	color: whitesmoke;
 }
-#main{
+h1{
 	background:whitesmoke;
 	color: black;
 	border-top-left-radius: 9px;
@@ -10,54 +11,40 @@ body{
 	word-wrap: break-word;
 	padding-bottom: 3px;
 }
+.input{
+	height: 34px;
+	padding-left: 12px;
+	padding-right: 12px;
+	border-radius: 12px;
+}
 
-#btn{
-	margin: 10px;
-	padding: 12px;
-	background: green;
+#submit{
+	background:green;
 	color: whitesmoke;
+	margin:10px;
+	padding: 12px;
 	border-style: ridge;
 }
-#btn:hover{
+#submit:hover{
 	cursor: pointer;
-	background: orange;
+	background-color: orange
 }
-#results{
-	font-weight: bold;
-}
-
-p,ol{
-	color: whitesmoke;
-}
-hr{
-	border-color: whitesmoke;
-}
-#result_placeholder{
+#dummyOutput{
 	font-style: italic;
 	color: green;
+	background: whitesmoke;
 	padding: 12px;
 }
-#result_placeholder2{
-	background: whitesmoke;
-	font-style: bold;
-	color: green;
-	padding: 12px;
-}
-#output{
-	background: whitesmoke;
-	margin-top: 12px
-}
-#remark{
-	color: whitesmoke;
-	font-style: italic;
-	background: whitesmoke;
-
-}
-
 ol{
 	background: #4169E1;
 	padding-bottom: 12px;
 	padding-top:12px;
 	border-bottom-left-radius: 9px;
 	border-bottom-right-radius: 9px;
+}
+#remarks{
+	color: whitesmoke;
+	font-style: italic;
+	background: whitesmoke;
+
 }
