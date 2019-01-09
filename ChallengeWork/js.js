@@ -70,7 +70,7 @@ if(
                 remark.innerHTML = ''
                 remark.innerHTML += "Checking result now"
                 if(rightSide === 0){
-                    console.log( `${b[i]},${diff + b[i]}`)
+                    
                     
                     result2.innerHTML += `Adding ${b[i]} to the LHS and ${diff + b[i]} to the RHS balances the scale <br>
                     (${b[i]},${diff + b[i]}) <hr> 
@@ -78,7 +78,12 @@ if(
 
                   
 
-                }else{
+                }else if(leftSide>rightSide){
+                    result2.innerHTML += `Adding ${b[i]} to the LHS and ${diff + b[i]} to the RHS  balances the scale <br>
+                (${b[i]},${diff + b[i]}) <br> <hr>`
+                }
+               
+               else{
                     console.log( `${b[i]},${diff + b[i]}`)
                     result2.innerHTML += `Adding ${b[i]} to the RHS and ${diff + b[i]} to the LHS balances the scale <br>
                 (${b[i]},${diff + b[i]}) <br> <hr>
